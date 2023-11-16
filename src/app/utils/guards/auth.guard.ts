@@ -23,7 +23,7 @@ class PermissionsService {
       return true;
     }
 
-    this.router.navigate(['/login']);
+    this._authS.handleRouteToLogin(state.url);
     return false;
   }
 }

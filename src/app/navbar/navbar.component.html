@@ -1,12 +1,12 @@
 <nav
   class="fixed flex justify-between w-full items-center py-2 px-6 md:px-32 bg-white z-[2]"
 >
-  <a class="logo text-2xl cursor-pointer">
+  <a class="logo text-2xl cursor-pointer" routerLink="/">
     <span class="">Company </span>
     <span class="text-primary">Search</span>
   </a>
   <div class="text-sm text-dark">
     <button *ngIf="!user" (click)="goToLogin()">Sign In</button>
-    <span *ngIf="user">{{ user.username }}</span>
+    <span *ngIf="user">{{ user.username | titlecase }}</span>
   </div>
 </nav>

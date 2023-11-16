@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: ':companyNumber',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./company-details/company-details.module').then(
         (m) => m.CompanyDetailsModule

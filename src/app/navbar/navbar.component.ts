@@ -20,12 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   goToLogin() {
-    const url = this.router.url.split('/')[1];
-    const queryParams = {
-      returnUrl: url || '',
-    };
-    this.router.navigate(['/login'], {
-      queryParams,
-    });
+    const url = this.router.url;
+    this._authS.handleRouteToLogin(url);
   }
 }

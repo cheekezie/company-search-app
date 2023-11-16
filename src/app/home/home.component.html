@@ -4,21 +4,29 @@
   <!-- search view -->
   <mat-tab>
     <div
-      class="main flex flex-col justify-center items-center h-[100vh] px-6 md:px-32"
+      class="main flex flex-col justify-center items-center h-[100vh] px-6 md:px-32 mt-[-50px]"
     >
       <form
-        (ngSubmit)="onSubmit()"
+        (ngSubmit)="search()"
         class="max-w-[500px] w-full flex flex-col items-center"
       >
+        <h3 class="text-5xl mb-8 text-center">
+          Search for a <span class="text-primary">Company</span>
+        </h3>
         <input
           type="text"
           class="w-full text-center"
-          placeholder="Company name or number"
+          placeholder="Company Name or Number"
           [formControl]="searchCtrl"
         />
+        <span
+          *ngIf="searchCtrl.touched && searchCtrl.invalid"
+          class="text-red-400 mt-2 block text-sm"
+          >Enter a search text to proceed</span
+        >
         <button
           type="submit"
-          class="bg-primary text-white btn-lg mt-4"
+          class="bg-primary text-white btn-lg mt-6"
           [disabled]="searching"
         >
           {{ searching ? "searching..." : "Search" }}
@@ -39,6 +47,10 @@
         Back to Search
       </button>
       <h3>Search Results</h3>
+
+      <!-- show spinner when url query text exists -->
+      <mat-spinner *ngIf="searching"></mat-spinner>
+
       <div *ngFor="let company of companies" class="my-8">
         <a
           class="text-blue-600 underline mb-2 text-lg cursor-pointer"

@@ -29,9 +29,13 @@ export class CompanyDetailsComponent {
     this.company = JSON.parse(company);
   }
   // Go back to company details view
-  backToCompanyProfile() {
-    this.activeTab = 0;
-    this.activeCompanyNumber = '';
+  goBack() {
+    if (this.activeTab === 1) {
+      this.activeTab = 0;
+      this.activeCompanyNumber = '';
+      return;
+    }
+    this.router.navigate(['/']);
   }
 
   // Go to officers view
