@@ -27,13 +27,14 @@ export class HttpinterceptorService {
     const corsPrefix = 'https://corsproxy.io/?'; // To fix CORS temporarily on local development
     const baseUrl =
       'https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/';
+    const isLocalhost = window.location.hostname.includes('localhost');
 
     request = request.clone({
       setHeaders: {
         Accept: 'application/json',
         'x-api-key': apikey,
       },
-      url: corsPrefix + baseUrl + request.url,
+      url: (isLocalhost ? corsPrefix : '') + baseUrl + request.url,
     });
 
     return next.handle(request);
