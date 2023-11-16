@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<mat-tab-group class="bg-offwhite" [(selectedIndex)]="activeTab">
+  <!-- search view -->
+  <mat-tab>
+    <div
+      class="main flex flex-col justify-center items-center h-[100vh] px-6 md:px-32"
+    >
+      <form
+        (ngSubmit)="onSubmit()"
+        class="max-w-[500px] w-full flex flex-col items-center"
+      >
+        <input
+          type="text"
+          class="w-full text-center"
+          placeholder="Company name or number"
+          [formControl]="searchCtrl"
+        />
+        <button
+          type="submit"
+          class="bg-primary text-white btn-lg mt-4"
+          [disabled]="searching"
+        >
+          {{ searching ? "searching..." : "Search" }}
+        </button>
+      </form>
+    </div>
+  </mat-tab>
+
+  <!-- Search results -->
+  <mat-tab>
+    <div class="pt-32 px-6 md:px-32">
+      <button
+        type="button"
+        class="text-blue-600 mr-8 flex items-center px-0 mb-4"
+        (click)="backToSearch()"
+      >
+        <mat-icon class="mr-4">west</mat-icon>
+        Back to Search
+      </button>
+      <h3>Search Results</h3>
+      <div *ngFor="let company of companies" class="my-8">
+        <a
+          class="text-blue-600 underline mb-2 text-lg cursor-pointer"
+          (click)="goToCompany(company)"
+          >{{ company.title }}</a
+        >
+        <p class="text-dark">
+          <strong class="text-black">{{ company.company_number }}</strong>
+          - Incorporated on {{ company.date_of_creation | date }}
+        </p>
+        <p class="text-dark">{{ company.address_snippet }}</p>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

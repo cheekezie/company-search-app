@@ -1,0 +1,33 @@
+//MATERIAL SNACKBAR STYLING
+.mat-snack-bar-container {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.error-snackbar,
+.success-snackbar,
+.warning-snackbar {
+  z-index: 999999999 !important;
+}
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  line-height: initial !important;
+}
+
+.error-snackbar .mdc-snackbar__surface {
+  background-color: red !important;
+}
+.warning-snackbar .mdc-snackbar__surface {
+  background-color: orange !important;
+}
+.success-snackbar .mdc-snackbar__surface {
+  background-color: green !important;
+}
+.attention-snackbar .mdc-snackbar__surface {
+  background-color: rgb(136, 92, 11) !important;
+}
+.mat-mdc-snack-bar-container
+  .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: #fff !important;
+}

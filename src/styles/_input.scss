@@ -1,0 +1,35 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  position: relative;
+  label {
+    margin-bottom: 4px;
+  }
+}
+
+input {
+  min-height: calc(2.5em + 0.75rem + 1px);
+  max-height: calc(2.5em + 0.75rem + 1px);
+  padding: 0.385rem 1.2rem;
+  color: var(--dark);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 13px;
+  background: none;
+  border: 0.1rem solid grey;
+  position: relative;
+  &:focus,
+  &:hover,
+  &:active {
+    outline: none;
+    outline: 0;
+    outline-width: 0;
+  }
+  &.ng-touched.ng-valid {
+    border: 1px solid #5e5cef;
+  }
+  &.ng-touched.ng-invalid {
+    border: 1px solid lightcoral;
+  }
+}

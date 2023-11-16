@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./styles/index.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.logo {
+  font-family: "Dancing Script", cursive;
+}
+
+mat-tab-group {
+  mat-tab-header:first-of-type {
+    display: none !important;
+  }
+  .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+  }
+}
+
+@keyframes waveCloud {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.clouds {
+  animation: waveCloud 4s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+svg.clouds {
+  position: fixed;
+  bottom: -220px;
+  right: 0;
+  left: -120px;
+  // z-index: -10;
+}
