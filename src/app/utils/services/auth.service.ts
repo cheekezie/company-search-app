@@ -41,6 +41,8 @@ export class AuthService {
 
   handleRouteToLogin(url: string) {
     const returnUrl = url.split('/')[1];
+    console.log(returnUrl);
+
     const queryParams = {
       returnUrl: returnUrl || '',
     };

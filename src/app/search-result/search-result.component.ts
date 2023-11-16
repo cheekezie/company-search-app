@@ -5,6 +5,7 @@ import { CompanyProfileI } from '../utils/interfaces/company.interface';
 import { SearchService } from '../utils/services/search.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, of, switchMap, take } from 'rxjs';
+import { AuthService } from '../utils/services/auth.service';
 
 @Component({
   selector: 'app-search-result',
@@ -23,6 +24,7 @@ export class SearchResultComponent implements OnInit, OnDestroy {
   searchSub$: Subscription = new Subscription();
   constructor(
     private _searchS: SearchService,
+    private _authS: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -73,7 +75,10 @@ export class SearchResultComponent implements OnInit, OnDestroy {
     const queryParams = {
       search: this.searchStr,
     };
-    this.router.navigate(['', company.company_number], { queryParams });
+    this.router.navigate(
+      ['', company.company_number],
+      this._authS.isLoggedIn ? { queryParams } : {}
+    );
   }
 
   changePage(page: number) {}
