@@ -1,68 +1,31 @@
 <app-navbar></app-navbar>
-
-<mat-tab-group class="bg-offwhite" [(selectedIndex)]="activeTab">
-  <!-- search view -->
-  <mat-tab>
-    <div
-      class="main flex flex-col justify-center items-center h-[100vh] px-6 md:px-32 mt-[-50px]"
+<div
+  class="main flex flex-col justify-center items-center main-bg px-6 md:px-32"
+>
+  <form
+    (ngSubmit)="search()"
+    class="max-w-[500px] w-full flex flex-col items-center"
+  >
+    <h3 class="text-5xl mb-8 text-center">
+      Search for a <span class="text-primary">Company</span>
+    </h3>
+    <input
+      type="text"
+      class="w-full text-center"
+      placeholder="Company Name or Number"
+      [formControl]="searchCtrl"
+    />
+    <span
+      *ngIf="searchCtrl.touched && searchCtrl.invalid"
+      class="text-red-400 mt-2 block text-sm"
+      >Enter a search text to proceed</span
     >
-      <form
-        (ngSubmit)="search()"
-        class="max-w-[500px] w-full flex flex-col items-center"
-      >
-        <h3 class="text-5xl mb-8 text-center">
-          Search for a <span class="text-primary">Company</span>
-        </h3>
-        <input
-          type="text"
-          class="w-full text-center"
-          placeholder="Company Name or Number"
-          [formControl]="searchCtrl"
-        />
-        <span
-          *ngIf="searchCtrl.touched && searchCtrl.invalid"
-          class="text-red-400 mt-2 block text-sm"
-          >Enter a search text to proceed</span
-        >
-        <button
-          type="submit"
-          class="bg-primary text-white btn-lg mt-6"
-          [disabled]="searching"
-        >
-          {{ searching ? "searching..." : "Search" }}
-        </button>
-      </form>
-    </div>
-  </mat-tab>
-
-  <!-- Search results -->
-  <mat-tab>
-    <div class="pt-32 px-6 md:px-32">
-      <button
-        type="button"
-        class="text-blue-600 mr-8 flex items-center px-0 mb-4"
-        (click)="backToSearch()"
-      >
-        <mat-icon class="mr-4">west</mat-icon>
-        Back to Search
-      </button>
-      <h3>Search Results</h3>
-
-      <!-- show spinner when url query text exists -->
-      <mat-spinner *ngIf="searching"></mat-spinner>
-
-      <div *ngFor="let company of companies" class="my-8">
-        <a
-          class="text-blue-600 underline mb-2 text-lg cursor-pointer"
-          (click)="goToCompany(company)"
-          >{{ company.title }}</a
-        >
-        <p class="text-dark">
-          <strong class="text-black">{{ company.company_number }}</strong>
-          - Incorporated on {{ company.date_of_creation | date }}
-        </p>
-        <p class="text-dark">{{ company.address_snippet }}</p>
-      </div>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+    <button
+      type="submit"
+      class="bg-primary text-white btn-lg mt-6"
+      [disabled]="searching"
+    >
+      {{ searching ? "searching..." : "Search" }}
+    </button>
+  </form>
+</div>

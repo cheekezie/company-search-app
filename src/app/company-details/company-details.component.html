@@ -9,35 +9,35 @@
     Back
   </button>
   <mat-tab-group [(selectedIndex)]="activeTab">
-    <!-- search view -->
+    <!-- Main company profile view -->
     <mat-tab class="text-dark">
       <h6 class="mb-2 text-lg cursor-pointer">
-        {{ company?.title }}
+        {{ company.title }}
       </h6>
       <p class="mb-8">
         Company number
-        <strong class="text-black ml-2">{{ company?.company_number }}</strong>
+        <strong class="text-black ml-2">{{ company.company_number }}</strong>
       </p>
       <p class="mb-4">
         Registered office address
-        <strong class="text-black block">{{ company?.address_snippet }}</strong>
+        <strong class="text-black block">{{ company.address_snippet }}</strong>
       </p>
       <p class="mb-4">
         Company status
         <strong class="text-black block">{{
-          company?.company_status | titlecase
+          company.company_status | titlecase
         }}</strong>
       </p>
       <p class="mb-4">
         Company type
         <strong class="text-black block">{{
-          company?.company_type | titlecase
+          company.company_type | titlecase
         }}</strong>
       </p>
       <p class="mb-4">
         Incorporated on
         <strong class="text-black block">{{
-          company?.date_of_creation | date
+          company.date_of_creation | date
         }}</strong>
       </p>
       <a
@@ -49,10 +49,10 @@
 
     <!-- Officers List View -->
     <mat-tab>
-      <h3>{{ company?.title }} - Officers</h3>
+      <h3>{{ company.title }} - Officers</h3>
       <p class="text-dark mb-8">
         Company number
-        <strong class="text-black ml-2">{{ company?.company_number }}</strong>
+        <strong class="text-black ml-2">{{ company.company_number }}</strong>
       </p>
       <div *ngFor="let officer of officers">
         <p class="text-dark mb-4">

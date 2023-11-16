@@ -1,0 +1,70 @@
+// NGX Pagination Customization
+.ngx-pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  button,
+  .pagination-previous,
+  .pagination-next {
+    border: 1px solid var(--primary);
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    .material-icons {
+      font-size: 14px;
+    }
+  }
+  .pages {
+    padding: 0 10px;
+    max-width: 192px;
+  }
+  .page,
+  li {
+    padding: 6px 10px;
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &.active,
+    &.current {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      border-radius: 6px;
+      background: none;
+    }
+  }
+}
+
+.ngx-pagination {
+  justify-content: center !important;
+  position: relative;
+  margin-top: 20px;
+  .pagination-previous,
+  .pagination-next {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    &.disabled {
+      border: 1px solid #e4e4e7;
+    }
+  }
+  a {
+    padding: 0 !important;
+    outline: 0 !important;
+    &:hover {
+      background: none;
+    }
+  }
+
+  .pagination-previous {
+    left: 10px;
+  }
+  .pagination-next {
+    right: 10px;
+  }
+}

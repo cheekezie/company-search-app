@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../utils/services/auth.service';
-import { UserProfileI } from '../utils/interfaces/auth.interface';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { UserProfileI } from 'src/app/utils/interfaces/auth.interface';
+import { AuthService } from 'src/app/utils/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  standalone: true,
-  imports: [RouterModule, CommonModule],
 })
 export class NavbarComponent implements OnInit {
   user: UserProfileI | undefined;

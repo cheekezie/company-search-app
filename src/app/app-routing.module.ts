@@ -13,6 +13,13 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'search/:searchText',
+    loadChildren: () =>
+      import('./search-result/search-result.module').then(
+        (m) => m.SearchResultModule
+      ),
+  },
+  {
     path: ':companyNumber',
     canActivate: [AuthGuard],
     loadChildren: () =>

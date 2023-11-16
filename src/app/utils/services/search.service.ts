@@ -5,21 +5,32 @@ import {
   CompanySearchResponseI,
   OfficerProfileResponseI,
 } from '../interfaces/company.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { RequestService } from './request.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  corsPrefix = 'https://corsproxy.io/?'; // To fix CORS temporarily on local development
-  baseUrl =
-    this.corsPrefix +
-    'https://angular-exercise.trunarrative.cloud/TruProxyAPI/rest/Companies/v1/';
-  constructor(private _reqS: RequestService, private http: HttpClient) {}
+  private searchResult$: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  searchCompanies(Query: string) {
-    return this.http.get<CompanySearchResponseI>(`Search?Query=${Query}`);
+  constructor(private http: HttpClient) {}
+
+  setSearchResults(data: CompanyProfileI[]) {
+    this.searchResult$.next(data);
+  }
+
+  getSearchResult$(): Observable<CompanySearchResponseI> {
+    return this.searchResult$;
+  }
+
+  searchCompanies(Query: string): Observable<CompanySearchResponseI> {
+    return this.http.get(`Search?Query=${Query}`).pipe(
+      map((v: any) => {
+        this.setSearchResults(v);
+        return v;
+      })
+    );
   }
 
   companyOfficers(CompanyNumber: string) {
