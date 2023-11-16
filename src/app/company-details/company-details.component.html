@@ -57,7 +57,7 @@
       <div *ngFor="let officer of officers">
         <p class="text-dark mb-4">
           <strong class="text-black block">{{ officer.name }}</strong>
-          {{ officer.officer_role }}
+          {{ officer.officer_role | titlecase }}
         </p>
       </div>
       <mat-spinner *ngIf="loading"></mat-spinner>
