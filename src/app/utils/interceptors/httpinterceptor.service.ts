@@ -33,7 +33,8 @@ export class HttpinterceptorService {
         Accept: 'application/json',
         'x-api-key': apikey,
       },
-      url: corsPrefix + baseUrl + request.url,
+      url: baseUrl + request.url,
+      //url: corsPrefix + baseUrl + request.url,
     });
 
     return next.handle(request);
